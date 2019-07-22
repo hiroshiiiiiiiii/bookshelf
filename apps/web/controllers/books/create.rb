@@ -1,13 +1,13 @@
 module Web
   module Controllers
     module Books
-      class Index
+      class Create
         include Web::Action
 
-        expose :books
-
         def call(params)
-          @books = BookRepository.new.all
+          BookRepository.new.create(params[:book])
+
+          redirect_to '/books'
         end
       end
     end
